@@ -1,0 +1,18 @@
+{%extends 'qrservice/base.html'%}
+{%load qr_code%}
+{%block content%}
+
+<ul>
+	{%for qrcode in object_list%}
+		<li>
+		{%qr_from_text 'hi' %}
+			{{qrcode.unique_id}}
+		{%empty%}
+		<p>Нет QR-кодов</p>
+	</li>
+	{%endfor%}
+	</ul>
+{%endblock content%}
+
+
+<!--<li><img src="{{qrcode.image.url}}", alt= "" width = "150px", height="125px"/><span></span></li>-->

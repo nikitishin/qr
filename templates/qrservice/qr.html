@@ -1,0 +1,41 @@
+{%extends 'qrservice/base.html'%}
+{%block content%}
+{%load staticfiles%}
+
+    <form method="post" class="form-signin">{% csrf_token %}
+        <div><img src= "{%static 'images\IMG_0629.jpg'%}", alt= "" width = "150px", height="125px"></div>
+          <div class="text-center mb-4">
+            <img class="mb-4" src="{static 'url'}" alt="" width="150">
+            <h1 class="h3 mb-3 font-weight-normal">Есть что сказать?</h1>
+            <p>Опиши всё, что думаешь</p>
+          </div>
+        <div class="form-label-group">
+            {{ form.text }}
+            {{ form.text.errors }}
+        </div>
+
+        <div class="custom-control custom-switch">
+          <input type="checkbox" class="custom-control-input" id="switch" onclick="if(this.checked){document.getElementById('hidden').style.display='block';} else {document.getElementById('hidden').style.display='none';}">
+          <label class="custom-control-label" for="switch">Оставить контакты</label>
+        </div>
+        <div id="hidden" style="display: none;">
+            <div class="form-label-group">
+                {{ form.name }}
+                {{ form.name.errors }}
+                <label for="id_name">Имя</label>
+            </div>
+
+            <div class="form-label-group">
+                {{ form.contact }}
+                {{ form.contact.errors }}
+                <label for="id_contact">Контакт</label>
+            </div>
+        </div>
+        <button class="btn btn-lg btn-secondary btn-block" type="submit">Отправить</button>
+
+        <p class="mt-5 mb-3 text-muted text-center">политика конфиденциальности</p>
+    </form>
+{%endblock content%}
+
+
+
